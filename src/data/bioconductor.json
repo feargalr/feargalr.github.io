@@ -1,14 +1,5 @@
 {
  "retrieved": "2026-09-16",
  "package": "TaxSEA",
- "years": {
-  "2025": {
-   "distinct_ips": 1194,
-   "downloads": 2329
-  },
-  "2026": {
-   "distinct_ips": 3833,
-   "downloads": 7005
-  }
- }
+ "years": {}
 }

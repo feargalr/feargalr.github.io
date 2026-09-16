@@ -1,0 +1,16 @@
+---
+import software from '../data/software.yaml';
+const a = software.spotlight;
+---
+<article class="tool article">
+  <div class="top"><span class="tag">{a.tag}</span></div>
+  <h3><a href={`https://doi.org/${a.doi}`}>{a.title}</a></h3>
+  <p>{a.summary}</p>
+  <dl class="meta">
+    <div><dt>Published</dt><dd><i>{a.venue}</i> {a.year}</dd></div>
+  </dl>
+  <div class="links">
+    <a href={`https://doi.org/${a.doi}`}>Read the article</a>
+    {a.code && <a href={a.code}>Analysis code</a>}
+  </div>
+</article>

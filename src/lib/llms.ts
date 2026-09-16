@@ -55,9 +55,10 @@ export function llmsFull() {
   for (const t of software.featured) {
     out.push(`### ${t.name}`, plain(t.about), `Install: ${t.install}`, `Repository: ${t.repo}`, `Cite: ${t.paper.citation} https://doi.org/${t.paper.doi}`, '');
   }
-  software.contributed.forEach((m: any) => out.push(`- ${m.name} (${m.role}): ${m.description} ${m.url}`));
-  out.push('', '## Methods & best practice', '');
-  software.methods.forEach((m: any) => out.push(`- ${m.title}. ${m.venue}, ${m.year}. https://doi.org/${m.doi}. ${m.summary}`));
+  const s = software.spotlight;
+  out.push('', '## More tools & best practice', '');
+  out.push(`- ${s.title}. ${s.venue}, ${s.year}. https://doi.org/${s.doi}. ${plain(s.summary)}`);
+  software.more.forEach((m: any) => out.push(`- ${m.name} (${m.note}): ${m.description} ${m.links.map((l: any) => l.url).join(' ')}`));
   out.push('', '## Appointments');
   cv.appointments.forEach((a: any) => out.push(`- ${a.when} ${a.title}, ${a.where}`));
   out.push('', '## Education');

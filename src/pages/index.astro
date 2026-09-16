@@ -4,6 +4,7 @@ import TreeHero from '../components/TreeHero.astro';
 import CitationChart from '../components/CitationChart.astro';
 import ResearchThemes from '../components/ResearchThemes.astro';
 import ToolCard from '../components/ToolCard.astro';
+import ArticleCard from '../components/ArticleCard.astro';
 import TalkList from '../components/TalkList.astro';
 import site from '../data/site.yaml';
 import scholar from '../data/scholar.json';
@@ -68,6 +69,7 @@ const fundingMatch = site.figures.funding.match(/^(\$?)(.+?)(\+?)$/);
       <div class="section-head"><span class="label" id="software-label">Software &amp; methods</span><a class="more-link" href="/software/">All software &amp; methods →</a></div>
       <div class="soft-feature">
         {software.featured.map((t: any, i: number) => <ToolCard tool={t} lead={i === 0} />)}
+        <ArticleCard />
       </div>
     </div>
   </section>

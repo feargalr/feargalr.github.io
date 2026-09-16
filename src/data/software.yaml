@@ -49,8 +49,7 @@ featured:
       databases, formats and quirks. OpusTaxa wraps them in a single Snakemake workflow that runs
       the same way on a laptop or a SLURM cluster: download from the SRA, quality control, host
       read removal, taxonomic profiling with several complementary profilers, assembly and gene
-      prediction, and functional and antimicrobial-resistance annotation. Developed with Yen-Kai Chen,
-      who leads development.
+      prediction, and functional and antimicrobial-resistance annotation.
     install: git clone https://github.com/yenkaiC/OpusTaxa
     language: Snakemake
     repo: https://github.com/yenkaiC/OpusTaxa
@@ -70,49 +69,52 @@ featured:
           doi     = {10.64898/2026.04.15.718825}
         }
     meta:
-      - { label: Lead developer, value: Yen-Kai Chen }
       - { label: Runs on, value: Local · SLURM }
     published: bioRxiv 2026
 
-# Other tools, with your role on each
-contributed:
+# Article shown as a card alongside the featured tools
+spotlight:
+  title: Pitfalls in human metagenomic analyses
+  tag: Best practice
+  venue: Microbiology Australia
+  year: 2026
+  doi: 10.1071/ma26130
+  code: https://github.com/feargalr/hmp_2012_stool_taxon_prevalence
+  summary: >-
+    The common traps in human metagenome studies, from sparse and low-prevalence taxa to
+    reproducibility, and how to avoid them. Illustrated with public stool metagenomes, with all
+    analysis code available.
+
+# "More tools & best practice": smaller tools, resources and methods papers, in display order
+more:
   - name: SPINGO
-    role: Co-developer
-    url: https://github.com/GuyAllard/SPINGO
     note: Python · 2015
     description: Rapid species-level classifier for 16S rRNA amplicon sequences, developed with Guy Allard and Marcus Claesson at University College Cork.
-    paper: https://doi.org/10.1186/s12859-015-0747-1
+    links:
+      - { label: GitHub, url: https://github.com/GuyAllard/SPINGO }
+      - { label: Paper, url: https://doi.org/10.1186/s12859-015-0747-1 }
   - name: Demovir
-    role: Developer
-    url: https://github.com/feargalr/Demovir
-    note: R · 21★
+    note: R
     description: Order- and family-level taxonomic classification of viral contigs from metagenomes.
-  - name: Metagenomics tools atlas
-    role: Curator
-    url: https://github.com/feargalr/Metagenomics-tools-atlas
-    note: Resource
-    description: A curated inventory of tools and resources for short-read shotgun metagenomics.
+    links:
+      - { label: GitHub, url: https://github.com/feargalr/Demovir }
   - name: BiomeHue
-    role: Developer
-    url: https://github.com/feargalr/BiomeHue
     note: R
     description: Sensible, consistent colours for taxonomic barplots.
-
-# Methods papers and best-practice guidance
-methods:
-  - title: Pitfalls in human metagenomic analyses
-    venue: Microbiology Australia
-    year: 2026
-    doi: 10.1071/ma26130
-    code: https://github.com/feargalr/hmp_2012_stool_taxon_prevalence
-    summary: Common traps in human metagenome studies, from sparse and low-prevalence taxa to reproducibility, illustrated with public stool metagenomes.
-  - title: Choice of assembly software has a critical impact on virome characterisation
-    venue: Microbiome
-    year: 2019
-    doi: 10.1186/s40168-019-0626-5
-    summary: A benchmark showing that the assembler you pick changes which viruses you find, and by how much.
-  - title: Reproducible protocols for metagenomic analysis of human faecal phageomes
-    venue: Microbiome
-    year: 2018
-    doi: 10.1186/s40168-018-0446-z
-    summary: Laboratory and computational protocols for consistent, comparable studies of the bacteriophages in human stool.
+    links:
+      - { label: GitHub, url: https://github.com/feargalr/BiomeHue }
+  - name: Metagenomics tools atlas
+    note: Resource
+    description: A curated inventory of tools and resources for short-read shotgun metagenomics.
+    links:
+      - { label: GitHub, url: https://github.com/feargalr/Metagenomics-tools-atlas }
+  - name: Choice of assembly software has a critical impact on virome characterisation
+    note: Microbiome 2019
+    description: A benchmark showing that the assembler you pick changes which viruses you find, and by how much.
+    links:
+      - { label: Paper, url: https://doi.org/10.1186/s40168-019-0626-5 }
+  - name: Reproducible protocols for metagenomic analysis of human faecal phageomes
+    note: Microbiome 2018
+    description: Laboratory and computational protocols for consistent, comparable studies of the bacteriophages in human stool.
+    links:
+      - { label: Paper, url: https://doi.org/10.1186/s40168-018-0446-z }

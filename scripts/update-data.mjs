@@ -81,15 +81,31 @@ for (let i = 0; i < pubs.length; i += 40) {
 }
 
 pubs.sort((a, b) => (b.year ?? 0) - (a.year ?? 0) || a.title.localeCompare(b.title));
-await writeFile(new URL('src/data/publications.json', root), JSON.stringify({ retrieved: new Date().toISOString().slice(0, 10), items: pubs }, null, 1) + '\n');
-console.log(`publications.json: ${pubs.length} works`);
+// Never replace good data with a partial response from a flaky API
+const pubsPath = new URL('src/data/publications.json', root);
+const previous = JSON.parse(await readFile(pubsPath, 'utf8').catch(() => '{"items":[]}'));
+if (pubs.length < previous.items.length * 0.8) {
+  console.warn(`publications.json: kept existing file (${pubs.length} works fetched vs ${previous.items.length} before)`);
+} else {
+  await writeFile(pubsPath, JSON.stringify({ retrieved: new Date().toISOString().slice(0, 10), items: pubs }, null, 1) + '\n');
+  console.log(`publications.json: ${pubs.length} works`);
+}
 
 // 5. Bioconductor downloads for TaxSEA
-const tab = await (await fetch('https://bioconductor.org/packages/stats/bioc/TaxSEA/TaxSEA_stats.tab', { headers: UA })).text();
 const years = {};
-for (const line of tab.trim().split('\n').slice(1)) {
-  const [year, month, ips, downloads] = line.split('\t');
-  if (month === 'all') years[year] = { distinct_ips: Number(ips), downloads: Number(downloads) };
+try {
+  const res = await fetch('https://bioconductor.org/packages/stats/bioc/TaxSEA/TaxSEA_stats.tab', { headers: UA });
+  const tab = res.ok ? await res.text() : '';
+  for (const line of tab.trim().split('\n').slice(1)) {
+    const [year, month, ips, downloads] = line.split('\t');
+    if (month === 'all' && /^\d{4}$/.test(year) && Number(downloads) > 0) years[year] = { distinct_ips: Number(ips), downloads: Number(downloads) };
+  }
+} catch (err) {
+  console.warn(`bioconductor: request failed (${err.message})`);
 }
-await writeFile(new URL('src/data/bioconductor.json', root), JSON.stringify({ retrieved: new Date().toISOString().slice(0, 10), package: 'TaxSEA', years }, null, 1) + '\n');
-console.log('bioconductor.json: updated');
+if (Object.keys(years).length) {
+  await writeFile(new URL('src/data/bioconductor.json', root), JSON.stringify({ retrieved: new Date().toISOString().slice(0, 10), package: 'TaxSEA', years }, null, 1) + '\n');
+  console.log('bioconductor.json: updated');
+} else {
+  console.warn('bioconductor.json: no download data returned, kept existing file');
+}

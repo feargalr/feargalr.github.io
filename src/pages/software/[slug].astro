@@ -58,7 +58,7 @@ const schema = [{
           <dl class="meta" style="flex-direction:column">{tool.meta.map((m: any) => <div><dt>{m.label}</dt><dd>{m.value}</dd></div>)}</dl>
         </div>
       )}
-      {tool.show_downloads && (
+      {tool.show_downloads && years.length > 0 && (
         <div class="aside-block">
           <h2>Bioconductor downloads</h2>
           <table class="dl-table">

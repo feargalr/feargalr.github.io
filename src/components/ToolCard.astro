@@ -3,10 +3,10 @@ import bioc from '../data/bioconductor.json';
 import { fmt } from '../lib/format';
 interface Props { tool: any; lead?: boolean }
 const { tool, lead = false } = Astro.props;
-const years = Object.keys(bioc.years).sort();
-const latest = years[years.length - 1];
+const years: Record<string, { downloads: number; distinct_ips: number }> = bioc.years;
+const latest = Object.keys(years).sort().pop();
 const meta = [
-  ...(tool.show_downloads ? [{ label: `Downloads ${latest}`, value: fmt(bioc.years[latest as keyof typeof bioc.years].downloads) }] : []),
+  ...(tool.show_downloads && latest ? [{ label: `Downloads ${latest}`, value: fmt(years[latest].downloads) }] : []),
   ...(tool.meta ?? []),
   { label: tool.published.includes('bioRxiv') ? 'Preprint' : 'Published', value: tool.published },
 ];

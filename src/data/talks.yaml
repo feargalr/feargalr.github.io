@@ -1,6 +1,6 @@
 # Newest first. type: Invited | Accepted | Seminar. Add url: for recordings or slides.
-- { date: Sep 2026, event: West Coast Microbiome Network, type: Invited }
-- { date: Aug 2026, event: Australian Gastroenterology Week, type: Invited }
+- { date: Sep 2026, event: West Coast Microbiome Network, location: Western Australia, type: Invited }
+- { date: Aug 2026, event: Australian Gastroenterology Week, location: Western Australia, type: Invited }
 - { date: "2026", event: Australian Society for Microbiology National Conference, location: Victoria, type: Invited }
 - { date: "2025", event: International Conference on Systems Biology, location: "Dublin, Ireland", type: Invited }
 - { date: "2025", event: ISMB/ECCB, detail: Intelligent Systems for Molecular Biology / European Conference on Computational Biology, location: "Liverpool, UK", type: Accepted }

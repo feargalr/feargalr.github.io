@@ -52,6 +52,9 @@
     const pulses: { path: Node[]; t0: number; dur: number; done?: boolean }[] = [];
 
     const draw = (t: number) => {
+      // Styles can finish loading after this script starts; never draw with missing colours
+      if (!colors.c[0]) readColors();
+      if (!size) resize();
       const c = ctx, cx = size / 2, cy = size / 2;
       c.setTransform(dpr, 0, 0, dpr, 0, 0);
       c.clearRect(0, 0, size, size);
@@ -103,6 +106,10 @@
 
     readColors(); resize();
     const redrawStatic = () => { if (reduce) draw(0); };
+    // Re-read colours once every stylesheet has loaded, in case the first read was too early
+    const refresh = () => { readColors(); resize(); redrawStatic(); };
+    if (document.readyState === 'complete') refresh(); else window.addEventListener('load', refresh, { once: true });
+    document.fonts?.ready.then(refresh);
     new ResizeObserver(() => { resize(); redrawStatic(); }).observe(cv);
     new MutationObserver(() => { readColors(); redrawStatic(); }).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
     matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { readColors(); redrawStatic(); });

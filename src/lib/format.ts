@@ -34,7 +34,7 @@ export const TOPICS: { key: string; label: string; rx: RegExp }[] = [
   { key: 'cancer', label: 'Cancer', rx: /cancer|tumou?r|oncolog|hct|haematopoietic|chemotherap|prostate/i },
   { key: 'gut', label: 'Gut health & IBD', rx: /inflammatory bowel|colonic|postbiotic|high-fat|listeria|antibiotic|faecal microbiota/i },
   { key: 'neuro', label: 'Gut–brain & neuro', rx: /brain|neuro|amygdala|cortex|serotonin|mesocorticolimbic|cognitive|afferent/i },
-  { key: 'methods', label: 'Methods & software', rx: /taxsea|opustaxa|spingo|protocol|assembly software|machine learning|reproducible/i },
+  { key: 'methods', label: 'Methods & software', rx: /taxsea|opustaxa|spingo|protocol|assembly software|machine learning|reproducible|pitfalls/i },
 ];
 export const topicsFor = (title: string) => TOPICS.filter((t) => t.rx.test(title)).map((t) => t.key);
 

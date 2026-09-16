@@ -74,8 +74,45 @@ featured:
       - { label: Runs on, value: Local · SLURM }
     published: bioRxiv 2026
 
-more:
-  - { name: Demovir, url: https://github.com/feargalr/Demovir, note: R, description: Order- and family-level taxonomy for viral contigs. }
-  - { name: SPINGO, url: https://doi.org/10.1186/s12859-015-0747-1, note: "2015", description: Rapid species classifier for 16S amplicon sequences. }
-  - { name: Tools atlas, url: https://github.com/feargalr/Metagenomics-tools-atlas, note: Resource, description: A curated inventory of short-read shotgun metagenomics tools. }
-  - { name: BiomeHue, url: https://github.com/feargalr/BiomeHue, note: R, description: Sensible, consistent colours for taxonomic barplots. }
+# Other tools, with your role on each
+contributed:
+  - name: SPINGO
+    role: Co-developer
+    url: https://github.com/GuyAllard/SPINGO
+    note: Python · 2015
+    description: Rapid species-level classifier for 16S rRNA amplicon sequences, developed with Guy Allard and Marcus Claesson at University College Cork.
+    paper: https://doi.org/10.1186/s12859-015-0747-1
+  - name: Demovir
+    role: Developer
+    url: https://github.com/feargalr/Demovir
+    note: R · 21★
+    description: Order- and family-level taxonomic classification of viral contigs from metagenomes.
+  - name: Metagenomics tools atlas
+    role: Curator
+    url: https://github.com/feargalr/Metagenomics-tools-atlas
+    note: Resource
+    description: A curated inventory of tools and resources for short-read shotgun metagenomics.
+  - name: BiomeHue
+    role: Developer
+    url: https://github.com/feargalr/BiomeHue
+    note: R
+    description: Sensible, consistent colours for taxonomic barplots.
+
+# Methods papers and best-practice guidance
+methods:
+  - title: Pitfalls in human metagenomic analyses
+    venue: Microbiology Australia
+    year: 2026
+    doi: 10.1071/ma26130
+    code: https://github.com/feargalr/hmp_2012_stool_taxon_prevalence
+    summary: Common traps in human metagenome studies, from sparse and low-prevalence taxa to reproducibility, illustrated with public stool metagenomes.
+  - title: Choice of assembly software has a critical impact on virome characterisation
+    venue: Microbiome
+    year: 2019
+    doi: 10.1186/s40168-019-0626-5
+    summary: A benchmark showing that the assembler you pick changes which viruses you find, and by how much.
+  - title: Reproducible protocols for metagenomic analysis of human faecal phageomes
+    venue: Microbiome
+    year: 2018
+    doi: 10.1186/s40168-018-0446-z
+    summary: Laboratory and computational protocols for consistent, comparable studies of the bacteriophages in human stool.

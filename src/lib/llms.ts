@@ -26,7 +26,7 @@ export function llmsSummary() {
     '',
     '## Pages',
     `- [Research](${SITE}/research/): ${research.map((r: any) => r.title).join('; ')}`,
-    `- [Software](${SITE}/software/): ${software.featured.map((t: any) => `${t.name} (${t.tagline})`).join('; ')}`,
+    `- [Software & methods](${SITE}/software/): ${software.featured.map((t: any) => `${t.name} (${t.tagline})`).join('; ')}`,
     `- [Publications](${SITE}/publications/): all ${pubs.items.length} publications`,
     `- [Talks](${SITE}/talks/)`,
     `- [Community & service](${SITE}/community/)`,
@@ -55,7 +55,9 @@ export function llmsFull() {
   for (const t of software.featured) {
     out.push(`### ${t.name}`, plain(t.about), `Install: ${t.install}`, `Repository: ${t.repo}`, `Cite: ${t.paper.citation} https://doi.org/${t.paper.doi}`, '');
   }
-  software.more.forEach((m: any) => out.push(`- ${m.name}: ${m.description} ${m.url}`));
+  software.contributed.forEach((m: any) => out.push(`- ${m.name} (${m.role}): ${m.description} ${m.url}`));
+  out.push('', '## Methods & best practice', '');
+  software.methods.forEach((m: any) => out.push(`- ${m.title}. ${m.venue}, ${m.year}. https://doi.org/${m.doi}. ${m.summary}`));
   out.push('', '## Appointments');
   cv.appointments.forEach((a: any) => out.push(`- ${a.when} ${a.title}, ${a.where}`));
   out.push('', '## Education');

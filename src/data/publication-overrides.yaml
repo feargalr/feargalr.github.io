@@ -5,6 +5,10 @@ hide:
   - 10.1101/591099            # FVT preprint, published as BMC Biology 2020
   - 10.1101/2024.11.20.624438 # TaxSEA preprint, published in Briefings in Bioinformatics 2025
 
+# Papers missing from ORCID. Add them to ORCID too, then they can be removed from here.
+add:
+  - 10.1071/ma26130           # Pitfalls in human metagenomic analyses, Microbiology Australia 2026
+
 # Tidy journal names as they come from ORCID/Crossref
 journal_names:
   Cell host & microbe: Cell Host & Microbe

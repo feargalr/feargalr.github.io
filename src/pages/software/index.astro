@@ -4,16 +4,45 @@ import PageHead from '../../components/PageHead.astro';
 import ToolCard from '../../components/ToolCard.astro';
 import software from '../../data/software.yaml';
 ---
-<Base title="Software" description="Open-source microbiome software by Feargal J. Ryan, including TaxSEA (Bioconductor) for taxon set enrichment analysis and the OpusTaxa shotgun metagenomics workflow.">
-  <PageHead title="Software" intro="Open source, documented and cited. Bug reports and feature requests are welcome on GitHub." />
+<Base title="Software & methods" description="Microbiome software and methods by Feargal J. Ryan: TaxSEA (Bioconductor), OpusTaxa, SPINGO and Demovir, plus benchmarks and best-practice guidance for metagenomic and virome analysis.">
+  <PageHead title="Software & methods" intro="Tools I lead or have helped build, and the benchmarks and best-practice guidance behind them. Bug reports and feature requests are welcome on GitHub." />
   <div class="wrap page-body">
-    <div class="soft-feature">
-      {software.featured.map((t: any, i: number) => <ToolCard tool={t} lead={i === 0} />)}
-    </div>
-    <div class="soft-more">
-      {software.more.map((m: any) => (
-        <div class="mini"><h3><a href={m.url}>{m.name}</a><span>{m.note}</span></h3><p>{m.description}</p></div>
-      ))}
-    </div>
+    <section aria-labelledby="lead-h">
+      <h2 class="sub-h" id="lead-h">Lead developer</h2>
+      <div class="soft-feature">
+        {software.featured.map((t: any, i: number) => <ToolCard tool={t} lead={i === 0} />)}
+      </div>
+    </section>
+
+    <section aria-labelledby="contrib-h">
+      <h2 class="sub-h" id="contrib-h">More tools</h2>
+      <div class="soft-more">
+        {software.contributed.map((m: any) => (
+          <div class="mini">
+            <span class="role">{m.role}</span>
+            <h3><a href={m.url}>{m.name}</a><span>{m.note}</span></h3>
+            <p>{m.description}</p>
+            {m.paper && <p class="mini-link"><a href={m.paper}>Paper</a></p>}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section aria-labelledby="methods-h">
+      <h2 class="sub-h" id="methods-h">Methods &amp; best practice</h2>
+      <ul class="methods">
+        {software.methods.map((m: any) => (
+          <li>
+            <span class="mono">{m.year}</span>
+            <div>
+              <a class="t" href={`https://doi.org/${m.doi}`}>{m.title}</a>
+              <span class="venue"><i>{m.venue}</i></span>
+              <p>{m.summary}</p>
+              {m.code && <p class="mini-link"><a href={m.code}>Analysis code</a></p>}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
   </div>
 </Base>

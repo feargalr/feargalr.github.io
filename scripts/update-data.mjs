@@ -41,6 +41,11 @@ const items = works.group.map((g) => {
   };
 }).filter((p) => p.doi && !hidden.has(p.doi) && !p.doi.includes('cassyni'));
 
+// Papers missing from ORCID, listed in publication-overrides.yaml; Crossref fills in the details below
+for (const doi of (overrides.add ?? []).map((d) => d.toLowerCase())) {
+  if (!items.some((p) => p.doi === doi)) items.push({ title: doi, year: null, journal: null, doi, preprint: false });
+}
+
 // 2. De-duplicate: the same paper often appears as preprint + journal article
 const key = (t) => t.toLowerCase().replace(/[^a-z]/g, '').slice(0, 45);
 const byKey = new Map();
@@ -60,6 +65,7 @@ for (const p of pubs) {
   p.title = (m.title?.[0] ?? p.title).replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
   p.journal = p.journal ?? m['container-title']?.[0] ?? m.institution?.[0]?.name ?? null;
   p.preprint = m.type === 'posted-content' || isPreprintDoi(p.doi);
+  p.year = p.year ?? m.issued?.['date-parts']?.[0]?.[0] ?? null;
   p.authors = (m.author ?? []).map((a) => {
     const initials = (a.given ?? '').split(/[\s.-]+/).filter(Boolean).map((x) => x[0]).join('');
     return `${a.family ?? a.name ?? ''} ${initials}`.trim();

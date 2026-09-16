@@ -182,6 +182,20 @@ section.block{padding:80px 0;border-top:1px solid var(--line-2)}
 @media (max-width:900px){.soft-feature{grid-template-columns:1fr}.soft-more{grid-template-columns:1fr 1fr}.mini:nth-child(3){padding-left:0;border-left:0}}
 @media (max-width:520px){.soft-more{grid-template-columns:1fr}.mini+.mini{padding-left:0;border-left:0}}
 
+.mini .role{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.mini-link{margin-top:8px!important;font-size:14px!important;font-weight:600}
+.mini-link a{text-decoration:none}
+.mini-link a:hover{text-decoration:underline}
+.soft-more{margin-top:0}
+.methods{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.methods li{display:grid;grid-template-columns:70px minmax(0,1fr);gap:20px;padding:18px 0;border-bottom:1px solid var(--line-2)}
+.methods .mono{font-size:13.5px;color:var(--teal);padding-top:3px}
+.methods .t{font-weight:600;font-size:17px;line-height:1.4;color:var(--ink);text-decoration:none}
+.methods .t:hover{color:var(--teal)}
+.methods .venue{display:block;font-size:14px;color:var(--ink-2);margin-top:2px}
+.methods p{color:var(--ink-2);font-size:15.5px;margin-top:6px;max-width:70ch}
+@media (max-width:560px){.methods li{grid-template-columns:1fr;gap:4px}}
+
 /* software detail */
 .tool-head{padding:64px 0 36px;display:grid;gap:18px}
 .tool-head .top{display:flex;align-items:center;gap:16px;flex-wrap:wrap}

@@ -51,7 +51,7 @@ if (!connected) console.warn('\n[contact] form_endpoint is empty in src/data/sit
     e.preventDefault();
     status.classList.remove('err');
     if (form.dataset.connected !== 'true') {
-      status.textContent = 'The contact form is not connected yet. Please use the Flinders University profile link.';
+      status.textContent = 'The contact form is unavailable right now. Please use the Flinders University profile link.';
       status.classList.add('err');
       return;
     }

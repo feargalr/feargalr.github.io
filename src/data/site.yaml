@@ -49,6 +49,6 @@ affiliations:
 
 contact:
   # Paste your Formspree form URL here, e.g. https://formspree.io/f/abcdwxyz
-  form_endpoint: ""
+  form_endpoint: https://formspree.io/f/xljdrkeo
   address: Health and Medical Research Building, Flinders University, Bedford Park SA 5042
   topics: [Research collaboration, PhD or postdoc opportunities, Software help, Talks & media, Something else]

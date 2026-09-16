@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import community from '../data/community.yaml';
+import { inline } from '../lib/format';
+const a = community.abacbs;
+---
+<Base title="Community & service" description="Dr Feargal J. Ryan's service to the scientific community, including as Vice-President of the Australian Bioinformatics and Computational Biology Society (ABACBS).">
+  <PageHead title="Community & service" />
+  <div class="wrap page-body">
+    <div class="service">
+      <div class="org">
+        <span class="label">{a.org}</span>
+        <h2>{a.role}</h2>
+        {a.paragraphs.map((t: string) => <p>{t}</p>)}
+        <div class="term">
+          {a.terms.map((t: any) => <div><b>{t.when}</b>{t.what}</div>)}
+        </div>
+      </div>
+      <ul class="svc-list">
+        {community.service.map((s: any) => <li><b>{s.title}</b><span set:html={inline(s.detail)} /></li>)}
+      </ul>
+    </div>
+  </div>
+</Base>

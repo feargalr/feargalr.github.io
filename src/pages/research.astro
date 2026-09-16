@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import ResearchThemes from '../components/ResearchThemes.astro';
+import research from '../data/research.yaml';
+
+const schema = research.flatMap((r: any) => r.papers.map((p: any) => ({
+  '@type': 'ScholarlyArticle', headline: p.title, datePublished: String(p.year),
+  isPartOf: { '@type': 'Periodical', name: p.venue }, sameAs: `https://doi.org/${p.doi}`,
+  author: { '@id': 'https://feargalryan.com/#person' },
+})));
+---
+<Base title="Research" description="Research programs of Dr Feargal J. Ryan: early-life microbes and vaccine responses, molecular mechanisms of long COVID, precision medicine for IBD, and the human gut virome." schema={schema}>
+  <PageHead title="Research" intro="Four programs, each using large-scale molecular data to understand how microbes, viruses and the immune system shape human health." />
+  <div class="wrap page-body">
+    <ResearchThemes detailed />
+    <p class="source-note">For every paper, see <a href="/publications/">Publications</a>.</p>
+  </div>
+</Base>

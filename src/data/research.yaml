@@ -1,0 +1,45 @@
+- slug: vaccines
+  title: Early-life microbes & vaccine responses
+  summary: >-
+    Why do some people respond strongly to vaccines and others don't? Gut Bifidobacteria turn out
+    to be essential for infant responses to the PCV13 pneumococcal vaccine. Antibiotics given in
+    the first days of life deplete them and blunt vaccine responses for up to seven months.
+  impact: >-
+    A world-first probiotic trial now underway in South Australia; Research Highlights in
+    *Nature Reviews Microbiology* and *Nature Reviews Immunology*.
+  papers:
+    - { year: 2025, title: Bifidobacteria support optimal infant vaccine responses, venue: Nature, doi: 10.1038/s41586-025-08796-4 }
+    - { year: 2023, title: A systems immunology study of COVID-19 mRNA and adenovirus-vectored vaccines, venue: Cell Reports Medicine, doi: 10.1016/j.xcrm.2023.100971 }
+
+- slug: long-covid
+  title: Molecular mechanisms of long COVID
+  summary: >-
+    Some of the earliest molecular evidence for long COVID: immune gene-expression signatures that
+    persist months after SARS-CoV-2 infection, and trace-level cytokines that impair heart muscle
+    cell function.
+  impact: Cited in UK NICE clinical guidance; Altmetric score of 872, in the top 1% of research outputs.
+  papers:
+    - { year: 2022, title: Long-term perturbation of the peripheral immune system months after SARS-CoV-2 infection, venue: BMC Medicine, doi: 10.1186/s12916-021-02228-6 }
+    - { year: 2024, title: Post-acute sequelae of SARS-CoV-2 cardiovascular symptoms and trace-level cytokines, venue: Nature Microbiology, doi: 10.1038/s41564-024-01838-z }
+
+- slug: ibd
+  title: Precision medicine for IBD
+  summary: >-
+    Multi-omic profiling of more than 850 patients across Ireland and North America, with over 340
+    biopsies. It showed that the microbiome modulates inflammation through epigenetic mechanisms
+    and that medication drives much of the variation.
+  impact: Cited in German national IBD guidelines (AWMF); led to a data-licensing collaboration with Second Genome Inc.
+  papers:
+    - { year: 2020, title: Colonic microbiota is associated with inflammation and host epigenomic alterations in IBD, venue: Nature Communications, doi: 10.1038/s41467-020-15342-5 }
+    - { year: 2021, title: Ranking microbiome variance in inflammatory bowel disease, venue: Gut, doi: 10.1136/gutjnl-2020-321106 }
+
+- slug: virome
+  title: The human gut virome
+  summary: >-
+    Mapping the viruses of the gut, especially the bacteriophages that prey on our bacteria. The
+    virome is highly personal and stable over time. It changes in disease and is easily distorted
+    by analysis choices.
+  impact: More than 1,700 citations across three *Cell Host & Microbe* papers that helped define the field.
+  papers:
+    - { year: 2019, title: "The human gut virome is highly diverse, stable, and individual specific", venue: Cell Host & Microbe, doi: 10.1016/j.chom.2019.09.009 }
+    - { year: 2018, title: Biology and taxonomy of crAss-like bacteriophages, venue: Cell Host & Microbe, doi: 10.1016/j.chom.2018.10.002 }

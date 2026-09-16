@@ -1,0 +1,10 @@
+---
+import { inline } from '../lib/format';
+interface Props { items: { when: string; title: string; where: string }[] }
+const { items } = Astro.props;
+---
+<dl>
+  {items.map((i) => (
+    <div class="row"><dt>{i.when}</dt><dd>{i.title}<span set:html={inline(i.where)} /></dd></div>
+  ))}
+</dl>

@@ -1,0 +1,81 @@
+# Featured tools get their own page at /software/<slug>/
+featured:
+  - slug: taxsea
+    name: TaxSEA
+    tag: Bioconductor
+    tagline: Taxon set enrichment analysis for microbiome data
+    summary: >-
+      Taxon set enrichment analysis. Turn a ranked list of differentially abundant taxa into
+      interpretable signatures from BugSigDB, MiMeDB and other curated databases in seconds.
+    about: >-
+      Differential abundance analysis produces long lists of taxa that went up or down, which are
+      hard to interpret one by one. TaxSEA asks what those taxa have in common. It tests whether
+      predefined sets of taxa (published disease signatures from BugSigDB, producers of specific
+      metabolites from MiMeDB, and other curated collections) are shifted as a group, using a
+      Kolmogorov-Smirnov test on the ranked fold changes. It works with the output of DESeq2,
+      ALDEx2, MaAsLin2, ANCOM-BC or any other method that gives a fold change per taxon.
+    install: BiocManager::install("TaxSEA")
+    language: R
+    license: GPL-3
+    repo: https://github.com/feargalr/TaxSEA
+    links:
+      - { label: Documentation, url: https://feargalr.github.io/TaxSEA/ }
+      - { label: GitHub, url: https://github.com/feargalr/TaxSEA }
+      - { label: Bioconductor, url: https://bioconductor.org/packages/TaxSEA }
+      - { label: Paper, url: https://doi.org/10.1093/bib/bbaf173 }
+    paper:
+      citation: "Ryan FJ et al. TaxSEA: rapid interpretation of microbiome alterations using taxon set enrichment analysis and public databases. Briefings in Bioinformatics. 2025."
+      doi: 10.1093/bib/bbaf173
+      bibtex: |-
+        @article{ryan2025taxsea,
+          title   = {TaxSEA: rapid interpretation of microbiome alterations using taxon set enrichment analysis and public databases},
+          author  = {Ryan, Feargal J. and others},
+          journal = {Briefings in Bioinformatics},
+          year    = {2025},
+          doi     = {10.1093/bib/bbaf173}
+        }
+    show_downloads: true
+    published: Brief. Bioinform. 2025
+
+  - slug: opustaxa
+    name: OpusTaxa
+    tag: Snakemake
+    tagline: One workflow for shotgun metagenomes, from raw reads to results
+    summary: >-
+      One workflow from raw shotgun reads to results: QC, host removal, taxonomic profiling,
+      assembly and functional annotation, locally or on SLURM clusters.
+    about: >-
+      Shotgun metagenomics analyses usually mean stitching together a dozen tools, each with its own
+      databases, formats and quirks. OpusTaxa wraps them in a single Snakemake workflow that runs
+      the same way on a laptop or a SLURM cluster: download from the SRA, quality control, host
+      read removal, taxonomic profiling with several complementary profilers, assembly and gene
+      prediction, and functional and antimicrobial-resistance annotation. Developed with Yen-Kai Chen,
+      who leads development.
+    install: git clone https://github.com/yenkaiC/OpusTaxa
+    language: Snakemake
+    repo: https://github.com/yenkaiC/OpusTaxa
+    tools: [fastp, FastQC, MultiQC, Nonpareil, MetaPhlAn, Kraken2, Bracken, SingleM, Sylph, MetaSPAdes, Prodigal-GV, HUMAnN, RGI, antiSMASH]
+    links:
+      - { label: GitHub, url: https://github.com/yenkaiC/OpusTaxa }
+      - { label: Preprint, url: https://doi.org/10.64898/2026.04.15.718825 }
+    paper:
+      citation: "Chen Y-K, Harker CM, Pham CM, Grundy L, Wardill HR, Roach MJ, Ryan FJ. OpusTaxa: a unified workflow for taxonomic profiling, assembly, and functional analysis of shotgun metagenomes. bioRxiv. 2026."
+      doi: 10.64898/2026.04.15.718825
+      bibtex: |-
+        @article{chen2026opustaxa,
+          title   = {OpusTaxa: A Unified Workflow for Taxonomic Profiling, Assembly, and Functional Analysis of Shotgun Metagenomes},
+          author  = {Chen, Yen-Kai and Harker, C. M. and Pham, C. M. and Grundy, L. and Wardill, H. R. and Roach, M. J. and Ryan, Feargal J.},
+          journal = {bioRxiv},
+          year    = {2026},
+          doi     = {10.64898/2026.04.15.718825}
+        }
+    meta:
+      - { label: Lead developer, value: Yen-Kai Chen }
+      - { label: Runs on, value: Local · SLURM }
+    published: bioRxiv 2026
+
+more:
+  - { name: Demovir, url: https://github.com/feargalr/Demovir, note: R, description: Order- and family-level taxonomy for viral contigs. }
+  - { name: SPINGO, url: https://doi.org/10.1186/s12859-015-0747-1, note: "2015", description: Rapid species classifier for 16S amplicon sequences. }
+  - { name: Tools atlas, url: https://github.com/feargalr/Metagenomics-tools-atlas, note: Resource, description: A curated inventory of short-read shotgun metagenomics tools. }
+  - { name: BiomeHue, url: https://github.com/feargalr/BiomeHue, note: R, description: Sensible, consistent colours for taxonomic barplots. }

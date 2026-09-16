@@ -1,0 +1,31 @@
+appointments:
+  - { when: 2024–, title: Senior Research Fellow & NHMRC Investigator Fellow, where: Flinders University }
+  - { when: 2022–24, title: Research Fellow & NHMRC Investigator Fellow, where: South Australian Health and Medical Research Institute }
+  - { when: 2018–22, title: EMBL Australia Postdoctoral Fellow, where: South Australian Health and Medical Research Institute }
+  - { when: 2016–18, title: Postdoctoral Researcher, where: "APC Microbiome Institute, Ireland" }
+
+education:
+  - { when: "2017", title: PhD, where: "University College Cork, Ireland" }
+  - { when: "2013", title: MSc Bioinformatics, where: University College Cork }
+  - { when: "2011", title: BSc (Hons) Microbiology, where: University College Cork }
+
+awards:
+  - { when: "2025", title: World's Top 2% Scientists, where: Stanford University / Elsevier }
+  - { when: "2025", title: High Impact Publication Award, where: "SAHMRI, for the institute's highest-impact paper of the year (*Nature*)" }
+  - { when: "2025", title: Special Recognition Award for Outstanding Contributions, where: Australian Bioinformatics & Computational Biology Society }
+  - { when: "2025", title: People's Choice Award, where: Microbiome Virtual International Forum }
+  - { when: "2025", title: Vice-Chancellor's Award for Mid-Career Researchers, where: Flinders University }
+  - { when: "2022", title: Award for Scientific Excellence, where: APC Microbiome Institute }
+
+funding_total: More than $9M in competitive funding as CI or AI.
+funding:
+  - { when: 2026–31, title: NHMRC Ideas Grant, where: Associate Investigator }
+  - { when: 2026–30, title: NHMRC Ideas Grant, where: Associate Investigator }
+  - { when: 2026–28, title: ARC Discovery Project, where: Chief Investigator B }
+  - { when: 2024–29, title: "Women's & Children's Hospital Foundation (Bloom)", where: Chief Investigator F }
+  - { when: 2024–26, title: SA Genomics Centre Multi-omics Initiative, where: Chief Investigator A }
+  - { when: 2023–28, title: NHMRC Investigator Grant (Emerging Leadership), where: Chief Investigator A }
+  - { when: 2021–25, title: "MRFF Emerging Priorities & Consumer-Driven Research", where: Associate Investigator }
+
+# Optional: drop a PDF at public/feargal-ryan-cv.pdf and set this to true
+pdf: false

@@ -1,0 +1,27 @@
+---
+import bioc from '../data/bioconductor.json';
+import { fmt } from '../lib/format';
+interface Props { tool: any; lead?: boolean }
+const { tool, lead = false } = Astro.props;
+const years = Object.keys(bioc.years).sort();
+const latest = years[years.length - 1];
+const meta = [
+  ...(tool.show_downloads ? [{ label: `Downloads ${latest}`, value: fmt(bioc.years[latest as keyof typeof bioc.years].downloads) }] : []),
+  ...(tool.meta ?? []),
+  { label: tool.published.includes('bioRxiv') ? 'Preprint' : 'Published', value: tool.published },
+];
+---
+<article class:list={['tool', { lead }]}>
+  <div class="top"><h3><a href={`/software/${tool.slug}/`}>{tool.name}</a></h3><span class="tag">{tool.tag}</span></div>
+  <p>{tool.summary}</p>
+  {tool.show_downloads
+    ? <div class="code"><code>{tool.install}</code><button class="copy" type="button" data-copy={tool.install}>Copy</button></div>
+    : tool.tools && <ul class="chips">{tool.tools.slice(0, 8).map((t: string) => <li class="chip">{t}</li>)}</ul>}
+  <dl class="meta">
+    {meta.map((m) => <div><dt>{m.label}</dt><dd>{m.value}</dd></div>)}
+  </dl>
+  <div class="links">
+    <a href={`/software/${tool.slug}/`}>About {tool.name}</a>
+    {tool.links.map((l: any) => <a href={l.url}>{l.label}</a>)}
+  </div>
+</article>

@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import pubs from '../data/publications.json';
+import site from '../data/site.yaml';
+import { authorsHtml, TOPICS, topicsFor } from '../lib/format';
+
+const items = pubs.items.map((p: any) => ({ ...p, topics: topicsFor(p.title) }));
+const years = [...new Set(items.map((p: any) => p.year))];
+const retrieved = new Date(pubs.retrieved).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+const schema = items.map((p: any) => ({
+  '@type': 'ScholarlyArticle', headline: p.title, datePublished: String(p.year),
+  ...(p.journal ? { isPartOf: { '@type': 'Periodical', name: p.journal } } : {}),
+  sameAs: `https://doi.org/${p.doi}`, author: { '@id': 'https://feargalryan.com/#person' },
+}));
+---
+<Base title="Publications" description={`All ${items.length} publications by Dr Feargal J. Ryan on the microbiome, gut virome, immunology, vaccines, long COVID, IBD and cancer.`} schema={schema}>
+  <PageHead title="Publications" intro="Every paper, searchable by title, journal or co-author." />
+  <div class="wrap page-body">
+    <div class="pub-tools">
+      <input class="search" id="q" type="search" placeholder="Search titles, journals, co-authors…" aria-label="Search publications">
+    </div>
+    <div class="filters" role="group" aria-label="Filter by topic">
+      <button class="fbtn" type="button" data-topic="all" aria-pressed="true">All</button>
+      {TOPICS.map((t) => <button class="fbtn" type="button" data-topic={t.key} aria-pressed="false">{t.label}</button>)}
+    </div>
+    <p class="count" id="count" aria-live="polite">Showing {items.length} of {items.length} publications</p>
+    <div id="pubs">
+      {years.map((y) => (
+        <div class="yr" data-year={y}>
+          <h2>{y}</h2>
+          <ol>
+            {items.filter((p: any) => p.year === y).map((p: any) => (
+              <li class="pub" data-topics={p.topics.join(' ')} data-search={`${p.title} ${p.journal ?? ''} ${(p.authors ?? []).join(' ')}`.toLowerCase()}>
+                <div>
+                  <a class="t" href={`https://doi.org/${p.doi}`}>{p.title}</a>
+                  <div class="au" set:html={authorsHtml(p.authors)} />
+                  <div class="j"><i>{p.journal}</i>{p.preprint && <span class="pre">Preprint</span>}</div>
+                </div>
+                <div class="cites">{p.cites ?? '–'}<small>cited</small></div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      ))}
+    </div>
+    <p class="empty" id="empty" hidden>No publications match. Try a broader search, or choose All.</p>
+    <p class="source-note">
+      Synced from <a href={`https://orcid.org/${site.profiles.orcid}`}>ORCID</a> on {retrieved}, with author lists from Crossref and citation counts from OpenAlex. Counts differ slightly from <a href={site.profiles.scholar}>Google Scholar</a>.
+    </p>
+  </div>
+</Base>
+
+<script>
+  const q = document.getElementById('q') as HTMLInputElement;
+  const count = document.getElementById('count')!;
+  const empty = document.getElementById('empty')!;
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('.fbtn')];
+  const pubs = [...document.querySelectorAll<HTMLElement>('.pub')];
+  const groups = [...document.querySelectorAll<HTMLElement>('.yr')];
+  let topic = 'all';
+
+  const render = () => {
+    const term = q.value.trim().toLowerCase();
+    let shown = 0;
+    pubs.forEach((el) => {
+      const ok = (topic === 'all' || (el.dataset.topics ?? '').split(' ').includes(topic)) && (!term || (el.dataset.search ?? '').includes(term));
+      el.hidden = !ok;
+      if (ok) shown++;
+    });
+    groups.forEach((g) => (g.hidden = !g.querySelector('.pub:not([hidden])')));
+    count.textContent = `Showing ${shown} of ${pubs.length} publications`;
+    empty.hidden = shown > 0;
+  };
+
+  buttons.forEach((b) => b.addEventListener('click', () => {
+    topic = b.dataset.topic ?? 'all';
+    buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    render();
+  }));
+  q.addEventListener('input', render);
+</script>

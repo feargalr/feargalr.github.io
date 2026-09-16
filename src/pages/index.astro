@@ -1,0 +1,91 @@
+---
+import Base from '../layouts/Base.astro';
+import TreeHero from '../components/TreeHero.astro';
+import CitationChart from '../components/CitationChart.astro';
+import ResearchThemes from '../components/ResearchThemes.astro';
+import ToolCard from '../components/ToolCard.astro';
+import TalkList from '../components/TalkList.astro';
+import site from '../data/site.yaml';
+import scholar from '../data/scholar.json';
+import software from '../data/software.yaml';
+import { inline, fmt } from '../lib/format';
+
+const p = site.profiles;
+const [pubsLead, pubsSuffix] = site.figures.publications.match(/^(\d+)(\+?)$/)?.slice(1) ?? [site.figures.publications, ''];
+const fundingMatch = site.figures.funding.match(/^(\$?)(.+?)(\+?)$/);
+---
+<Base>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="label">{site.eyebrow}</span>
+        <h1>{site.name}<span class="post">{site.postnominals}</span></h1>
+        <p class="lede">{site.lede}</p>
+        <ul class="roles">
+          {site.roles.map((r: any) => <li><span><b>{r.lead}</b> {r.rest}</span></li>)}
+        </ul>
+        <div class="ids">
+          <a href={`https://orcid.org/${p.orcid}`}>ORCID <span class="mono">{p.orcid}</span></a>
+          <a href={p.scholar}>Google Scholar</a>
+          <a href={p.github}>GitHub</a>
+          <a href={p.linkedin}>LinkedIn</a>
+        </div>
+      </div>
+      <TreeHero />
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="record-label">
+    <div class="wrap">
+      <div class="section-head"><span class="label" id="record-label">Research record</span></div>
+      <div class="record">
+        <div>
+          <div class="bio">
+            <img src={site.photo.src} width="720" height="900" alt={site.photo.alt}>
+            <p set:html={inline(site.bio)} />
+          </div>
+          <div class="figs">
+            <div class="fig"><div class="n">{fmt(scholar.citations)}</div><div class="k">Citations</div></div>
+            <div class="fig"><div class="n">{scholar.h_index}</div><div class="k">h-index</div></div>
+            <div class="fig"><div class="n">{pubsLead}{pubsSuffix && <small>{pubsSuffix}</small>}</div><div class="k">Peer-reviewed publications</div></div>
+            <div class="fig"><div class="n">{fundingMatch?.[1] && <small>{fundingMatch[1]}</small>}{fundingMatch?.[2]}{fundingMatch?.[3] && <small>{fundingMatch[3]}</small>}</div><div class="k">Competitive funding as CI/AI</div></div>
+          </div>
+        </div>
+        <CitationChart />
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="research-label">
+    <div class="wrap">
+      <div class="section-head"><span class="label" id="research-label">Research</span><a class="more-link" href="/research/">Research programs in detail →</a></div>
+      <ResearchThemes />
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="software-label">
+    <div class="wrap">
+      <div class="section-head"><span class="label" id="software-label">Software</span><a class="more-link" href="/software/">All software →</a></div>
+      <div class="soft-feature">
+        {software.featured.map((t: any, i: number) => <ToolCard tool={t} lead={i === 0} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="talks-label">
+    <div class="wrap">
+      <div class="section-head"><span class="label" id="talks-label">Recent talks</span><a class="more-link" href="/talks/">All talks →</a></div>
+      <TalkList limit={4} />
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap contact-strip">
+      <div>
+        <h2>Let's work together</h2>
+        <p>Collaborations, PhD and postdoc opportunities, speaking invitations and software questions.</p>
+      </div>
+      <a class="btn btn-primary" href="/contact/">Get in touch</a>
+    </div>
+  </section>
+</Base>

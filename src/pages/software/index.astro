@@ -1,0 +1,19 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import software from '../../data/software.yaml';
+---
+<Base title="Software" description="Open-source microbiome software by Feargal J. Ryan, including TaxSEA (Bioconductor) for taxon set enrichment analysis and the OpusTaxa shotgun metagenomics workflow.">
+  <PageHead title="Software" intro="Open source, documented and cited. Bug reports and feature requests are welcome on GitHub." />
+  <div class="wrap page-body">
+    <div class="soft-feature">
+      {software.featured.map((t: any, i: number) => <ToolCard tool={t} lead={i === 0} />)}
+    </div>
+    <div class="soft-more">
+      {software.more.map((m: any) => (
+        <div class="mini"><h3><a href={m.url}>{m.name}</a><span>{m.note}</span></h3><p>{m.description}</p></div>
+      ))}
+    </div>
+  </div>
+</Base>

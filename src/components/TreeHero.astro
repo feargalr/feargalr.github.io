@@ -1,0 +1,111 @@
+<div class="tree-wrap">
+  <canvas id="tree" role="img" aria-label="Decorative circular taxonomic tree with an abundance ring"></canvas>
+</div>
+
+<script>
+  const root = document.documentElement;
+  const cv = document.getElementById('tree') as HTMLCanvasElement | null;
+  const ctx = cv?.getContext('2d');
+  if (cv && ctx) {
+    type Node = { depth: number; clade: number; children: Node[]; a: number; ab: number };
+    const css = (n: string) => getComputedStyle(root).getPropertyValue(n).trim();
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let seed = 17;
+    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const MAXD = 6;
+
+    const grow = (depth: number, clade: number): Node => {
+      const n: Node = { depth, clade, children: [], a: 0, ab: 0 };
+      if (depth < MAXD) {
+        const k = depth === 0 ? 6 : depth === 1 ? 2 + Math.floor(rnd() * 2) : rnd() < 0.18 ? 1 : rnd() < 0.7 ? 2 : 3;
+        if (!(depth >= 3 && rnd() < 0.14)) for (let i = 0; i < k; i++) n.children.push(grow(depth + 1, depth === 0 ? i : clade));
+      }
+      return n;
+    };
+    const tree = grow(0, 0);
+    const leaves: Node[] = [];
+    const collect = (n: Node) => (n.children.length ? n.children.forEach(collect) : leaves.push(n));
+    collect(tree);
+    leaves.forEach((l, i) => { l.a = -Math.PI / 2 + ((i + 0.5) / leaves.length) * Math.PI * 2; l.ab = 0.15 + Math.pow(rnd(), 1.6) * 0.85; });
+    const place = (n: Node) => { if (n.children.length) { n.children.forEach(place); n.a = (n.children[0].a + n.children[n.children.length - 1].a) / 2; } };
+    place(tree);
+
+    const pathTo = (leaf: Node) => {
+      const out: Node[] = [];
+      const find = (n: Node, acc: Node[]): boolean => {
+        const next = [...acc, n];
+        if (n === leaf) { out.push(...next); return true; }
+        return n.children.some((c) => find(c, next));
+      };
+      find(tree, []);
+      return out;
+    };
+
+    let size = 0, dpr = 1;
+    let colors = { line: '', pulse: '', glow: 0, ink3: '', c: [] as string[] };
+    const readColors = () => {
+      colors = { line: css('--tree-line'), pulse: css('--pulse'), glow: Number(css('--glow')), ink3: css('--ink-3'),
+        c: [css('--tree-1'), css('--tree-2'), css('--tree-3'), css('--tree-5'), css('--tree-4'), css('--tree-2')] };
+    };
+    const resize = () => { const r = cv.getBoundingClientRect(); dpr = Math.min(2, window.devicePixelRatio || 1); size = r.width; cv.width = size * dpr; cv.height = size * dpr; };
+    const rad = (d: number) => size * 0.07 + (d / MAXD) * size * 0.31;
+    const pulses: { path: Node[]; t0: number; dur: number; done?: boolean }[] = [];
+
+    const draw = (t: number) => {
+      const c = ctx, cx = size / 2, cy = size / 2;
+      c.setTransform(dpr, 0, 0, dpr, 0, 0);
+      c.clearRect(0, 0, size, size);
+      c.strokeStyle = colors.line; c.lineWidth = 1; c.setLineDash([2, 5]);
+      [0.395, 0.47].forEach((f) => { c.beginPath(); c.arc(cx, cy, size * f, 0, Math.PI * 2); c.stroke(); });
+      c.setLineDash([]);
+      const branch = (n: Node) => {
+        if (!n.children.length) return;
+        const r = rad(n.depth), col = colors.c[n.clade];
+        c.strokeStyle = n.depth === 0 ? colors.line : col; c.globalAlpha = n.depth === 0 ? 1 : 0.55; c.lineWidth = n.depth < 2 ? 1.6 : 1.1;
+        c.beginPath(); c.arc(cx, cy, r, n.children[0].a, n.children[n.children.length - 1].a); c.stroke();
+        n.children.forEach((ch) => {
+          c.strokeStyle = n.depth === 0 ? colors.c[ch.clade] : col;
+          const r2 = ch.children.length ? rad(ch.depth) : rad(MAXD);
+          c.beginPath(); c.moveTo(cx + Math.cos(ch.a) * r, cy + Math.sin(ch.a) * r); c.lineTo(cx + Math.cos(ch.a) * r2, cy + Math.sin(ch.a) * r2); c.stroke();
+          branch(ch);
+        });
+      };
+      branch(tree);
+      c.globalAlpha = 1;
+      const r0 = size * 0.405;
+      leaves.forEach((l) => {
+        const len = size * 0.055 * l.ab;
+        c.strokeStyle = colors.c[l.clade]; c.globalAlpha = 0.35 + 0.6 * l.ab; c.lineWidth = Math.max(1.5, size * 0.0105);
+        c.beginPath(); c.moveTo(cx + Math.cos(l.a) * r0, cy + Math.sin(l.a) * r0); c.lineTo(cx + Math.cos(l.a) * (r0 + len), cy + Math.sin(l.a) * (r0 + len)); c.stroke();
+      });
+      c.globalAlpha = 1;
+      leaves.forEach((l) => { const r = rad(MAXD); c.fillStyle = colors.c[l.clade]; c.beginPath(); c.arc(cx + Math.cos(l.a) * r, cy + Math.sin(l.a) * r, 1.6, 0, Math.PI * 2); c.fill(); });
+      c.fillStyle = colors.pulse; c.beginPath(); c.arc(cx, cy, 3.2, 0, Math.PI * 2); c.fill();
+      pulses.forEach((p) => {
+        const k = Math.min(1, (t - p.t0) / p.dur), idx = k * (p.path.length - 1), i = Math.floor(idx), f = idx - i;
+        const a = p.path[Math.min(i + 1, p.path.length - 1)], b = p.path[i];
+        const ra = i === 0 ? 0 : rad(b.depth), rb = a.children.length ? rad(a.depth) : rad(MAXD);
+        const rr = ra + (rb - ra) * f;
+        c.shadowColor = colors.pulse; c.shadowBlur = colors.glow ? 14 : 6;
+        c.fillStyle = colors.pulse; c.globalAlpha = Math.sin(k * Math.PI) * 0.95;
+        c.beginPath(); c.arc(cx + Math.cos(a.a) * rr, cy + Math.sin(a.a) * rr, 2.6, 0, Math.PI * 2); c.fill();
+        c.shadowBlur = 0; c.globalAlpha = 1;
+        if (k >= 1) p.done = true;
+      });
+    };
+
+    const tick = (t: number) => {
+      if (pulses.length < 5 && Math.random() < 0.03) pulses.push({ path: pathTo(leaves[Math.floor(Math.random() * leaves.length)]), t0: t, dur: 2600 + Math.random() * 1400 });
+      for (let i = pulses.length - 1; i >= 0; i--) if (pulses[i].done) pulses.splice(i, 1);
+      draw(t);
+      requestAnimationFrame(tick);
+    };
+
+    readColors(); resize();
+    const redrawStatic = () => { if (reduce) draw(0); };
+    new ResizeObserver(() => { resize(); redrawStatic(); }).observe(cv);
+    new MutationObserver(() => { readColors(); redrawStatic(); }).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { readColors(); redrawStatic(); });
+    if (reduce) draw(0); else requestAnimationFrame(tick);
+  }
+</script>

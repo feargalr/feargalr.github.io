@@ -1,0 +1,13 @@
+# Manual fixes applied on top of the ORCID sync.
+
+# DOIs to leave off the site (superseded preprints whose titles changed, duplicates, etc.)
+hide:
+  - 10.1101/591099            # FVT preprint, published as BMC Biology 2020
+  - 10.1101/2024.11.20.624438 # TaxSEA preprint, published in Briefings in Bioinformatics 2025
+
+# Tidy journal names as they come from ORCID/Crossref
+journal_names:
+  Cell host & microbe: Cell Host & Microbe
+  Cell Host and Microbe: Cell Host & Microbe
+  Applied and environmental microbiology: Applied and Environmental Microbiology
+  Proceedings of the National Academy of Sciences of the United States of America: PNAS

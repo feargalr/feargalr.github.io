@@ -1,0 +1,5 @@
+# All crawlers, including AI and LLM crawlers, are welcome.
+User-agent: *
+Allow: /
+
+Sitemap: https://feargalryan.com/sitemap-index.xml

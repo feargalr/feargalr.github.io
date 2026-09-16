@@ -1,0 +1,22 @@
+---
+import research from '../data/research.yaml';
+import { inline } from '../lib/format';
+interface Props { detailed?: boolean }
+const { detailed = false } = Astro.props;
+---
+<div class="themes">
+  {research.map((r: any) => (
+    <article class="theme" id={detailed ? r.slug : undefined}>
+      <h3>{detailed ? r.title : <a href={`/research/#${r.slug}`}>{r.title}</a>}</h3>
+      <p>{r.summary}</p>
+      {detailed && <p class="impact"><b>Impact</b><span set:html={inline(r.impact)} /></p>}
+      {detailed && (
+        <ul>
+          {r.papers.map((p: any) => (
+            <li><span class="mono">{p.year}</span><span><a href={`https://doi.org/${p.doi}`}>{p.title}</a> <em>{p.venue}</em></span></li>
+          ))}
+        </ul>
+      )}
+    </article>
+  ))}
+</div>

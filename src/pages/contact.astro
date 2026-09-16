@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import site from '../data/site.yaml';
+const c = site.contact;
+const connected = Boolean(c.form_endpoint);
+if (!connected) console.warn('\n[contact] form_endpoint is empty in src/data/site.yaml, so the contact form cannot send yet.\n');
+---
+<Base title="Contact" description="Contact Dr Feargal J. Ryan about research collaborations, PhD and postdoctoral opportunities, speaking invitations and software.">
+  <PageHead title="Contact" />
+  <div class="wrap contact">
+    <div>
+      <ul class="reasons">
+        <li><b>Research collaboration</b><span>Microbiome, virome or multi-omics data that needs a computational partner.</span></li>
+        <li><b>Join the group</b><span>PhD, Honours and postdoctoral opportunities at Flinders University.</span></li>
+        <li><b>Software help</b><span>For TaxSEA or OpusTaxa bugs, <a href="https://github.com/feargalr/TaxSEA/issues">open a GitHub issue</a>. You'll get a faster answer.</span></li>
+        <li><b>Talks &amp; media</b><span>Seminars, workshops and commentary on microbiome science.</span></li>
+      </ul>
+      <div class="direct">
+        <span>{c.address}</span>
+        <span>Official contact details are also on my <a href={site.profiles.institution}>Flinders University profile</a>.</span>
+      </div>
+    </div>
+    <form class="contact-form" id="contact-form" action={c.form_endpoint || undefined} method="POST" data-connected={String(connected)}>
+      <label>Name<input name="name" autocomplete="name" required placeholder="Your name"></label>
+      <label>Email<input name="email" type="email" autocomplete="email" required placeholder="you@institution.edu"></label>
+      <label class="full">What's this about?
+        <select name="topic" id="topic">
+          {c.topics.map((t: string) => <option>{t}</option>)}
+        </select>
+      </label>
+      <label class="full">Message<textarea name="message" required placeholder="A few lines about what you have in mind."></textarea></label>
+      <div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+      <div class="full form-foot">
+        <button class="btn btn-primary" type="submit">Send message</button>
+        <p class="status" id="status" role="status"></p>
+      </div>
+    </form>
+  </div>
+</Base>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const status = document.getElementById('status')!;
+  const topic = document.getElementById('topic') as HTMLSelectElement;
+
+  const wanted = new URLSearchParams(location.search).get('topic');
+  if (wanted === 'talks') topic.value = [...topic.options].find((o) => /talk/i.test(o.text))?.text ?? topic.value;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.classList.remove('err');
+    if (form.dataset.connected !== 'true') {
+      status.textContent = 'The contact form is not connected yet. Please use the Flinders University profile link.';
+      status.classList.add('err');
+      return;
+    }
+    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    button.disabled = true;
+    status.textContent = 'Sending…';
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset();
+      status.textContent = 'Message sent. Thanks, I will get back to you soon.';
+    } catch (err) {
+      status.textContent = 'Your message did not send. Check your connection and try again.';
+      status.classList.add('err');
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>

@@ -1,0 +1,20 @@
+{
+  "retrieved": "2026-09-13",
+  "source": "https://scholar.google.com/citations?user=9hGB7goAAAAJ",
+  "citations": 6724,
+  "h_index": 28,
+  "i10_index": 38,
+  "per_year": [
+    { "year": 2016, "cites": 63 },
+    { "year": 2017, "cites": 147 },
+    { "year": 2018, "cites": 220 },
+    { "year": 2019, "cites": 331 },
+    { "year": 2020, "cites": 579 },
+    { "year": 2021, "cites": 838 },
+    { "year": 2022, "cites": 904 },
+    { "year": 2023, "cites": 945 },
+    { "year": 2024, "cites": 970 },
+    { "year": 2025, "cites": 970 },
+    { "year": 2026, "cites": 688 }
+  ]
+}

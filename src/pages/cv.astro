@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import CvList from '../components/CvList.astro';
+import cv from '../data/cv.yaml';
+---
+<Base title="CV" description="Curriculum vitae of Dr Feargal J. Ryan: appointments, education, awards and research funding.">
+  <PageHead title="Curriculum vitae" />
+  <div class="wrap page-body">
+    <div class="cv">
+      <div>
+        <h2>Appointments</h2>
+        <CvList items={cv.appointments} />
+        <h2 class="sub">Education</h2>
+        <CvList items={cv.education} />
+      </div>
+      <div>
+        <h2>Recognition</h2>
+        <CvList items={cv.awards} />
+      </div>
+      <div>
+        <h2>Selected funding</h2>
+        <CvList items={cv.funding} />
+        <p class="cv-total">{cv.funding_total}</p>
+      </div>
+    </div>
+    {cv.pdf && <p style="margin-top:36px"><a class="btn btn-ghost" href="/feargal-ryan-cv.pdf">Download full CV (PDF)</a></p>}
+  </div>
+</Base>

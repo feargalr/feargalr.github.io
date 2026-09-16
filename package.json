@@ -1,0 +1,20 @@
+{
+  "name": "feargalryan-com",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "update-data": "node scripts/update-data.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource/hanken-grotesk": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/marcellus": "^5.3.0",
+    "@rollup/plugin-yaml": "^5.0.0",
+    "astro": "^7.3.2",
+    "js-yaml": "^5.4.2"
+  }
+}

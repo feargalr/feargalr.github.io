@@ -1,0 +1,72 @@
+---
+import Base from '../../layouts/Base.astro';
+import software from '../../data/software.yaml';
+import bioc from '../../data/bioconductor.json';
+import { fmt } from '../../lib/format';
+
+export function getStaticPaths() {
+  return software.featured.map((tool: any) => ({ params: { slug: tool.slug }, props: { tool } }));
+}
+const { tool } = Astro.props as { tool: any };
+const years = Object.entries(bioc.years).sort(([a], [b]) => b.localeCompare(a));
+const schema = [{
+  '@type': 'SoftwareSourceCode',
+  name: tool.name,
+  description: tool.summary.trim(),
+  codeRepository: tool.repo,
+  programmingLanguage: tool.language,
+  ...(tool.license ? { license: tool.license } : {}),
+  author: { '@id': 'https://feargalryan.com/#person' },
+  citation: `https://doi.org/${tool.paper.doi}`,
+  url: `https://feargalryan.com/software/${tool.slug}/`,
+}];
+---
+<Base title={`${tool.name}: ${tool.tagline}`} description={tool.summary.trim()} schema={schema}>
+  <div class="wrap tool-head">
+    <div class="top"><span class="label"><a href="/software/">Software</a></span><span class="tag">{tool.tag}</span></div>
+    <h1>{tool.name}</h1>
+    <p class="intro">{tool.tagline}</p>
+    <div class="code"><code>{tool.install}</code><button class="copy" type="button" data-copy={tool.install}>Copy</button></div>
+  </div>
+  <div class="wrap tool-body">
+    <div>
+      <div class="prose"><p>{tool.about}</p></div>
+      {tool.tools && (
+        <>
+          <h2 class="sub-h" style="margin-top:40px">Tools in the workflow</h2>
+          <ul class="chips">{tool.tools.map((t: string) => <li class="chip">{t}</li>)}</ul>
+        </>
+      )}
+      <section class="cite">
+        <h2>How to cite {tool.name}</h2>
+        <p>{tool.paper.citation} <a href={`https://doi.org/${tool.paper.doi}`}>doi:{tool.paper.doi}</a></p>
+        <pre><code>{tool.paper.bibtex}</code></pre>
+        <div class="row">
+          <button class="copy" type="button" data-copy={tool.paper.bibtex}>Copy BibTeX</button>
+          <button class="copy" type="button" data-copy={tool.paper.citation}>Copy citation</button>
+        </div>
+      </section>
+    </div>
+    <aside>
+      <div class="aside-block">
+        <h2>Links</h2>
+        <ul class="aside-links">{tool.links.map((l: any) => <li><a href={l.url}>{l.label}</a></li>)}</ul>
+      </div>
+      {tool.meta && (
+        <div class="aside-block">
+          <h2>Details</h2>
+          <dl class="meta" style="flex-direction:column">{tool.meta.map((m: any) => <div><dt>{m.label}</dt><dd>{m.value}</dd></div>)}</dl>
+        </div>
+      )}
+      {tool.show_downloads && (
+        <div class="aside-block">
+          <h2>Bioconductor downloads</h2>
+          <table class="dl-table">
+            <thead><tr><th scope="col">Year</th><th scope="col">Downloads</th><th scope="col">Unique IPs</th></tr></thead>
+            <tbody>{years.map(([y, v]) => <tr><td>{y}</td><td>{fmt(v.downloads)}</td><td>{fmt(v.distinct_ips)}</td></tr>)}</tbody>
+          </table>
+        </div>
+      )}
+    </aside>
+  </div>
+</Base>

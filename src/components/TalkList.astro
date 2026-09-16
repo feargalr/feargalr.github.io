@@ -1,0 +1,19 @@
+---
+import talks from '../data/talks.yaml';
+interface Props { limit?: number }
+const { limit } = Astro.props;
+const items = limit ? talks.slice(0, limit) : talks;
+---
+<ol class="talks">
+  {items.map((t: any) => (
+    <li class="talk">
+      <span class="when">{t.date}</span>
+      <span class="what">
+        {t.url ? <a href={t.url}>{t.event}</a> : t.event}
+        {t.detail && <span>{t.detail}</span>}
+      </span>
+      <span class="where">{t.location}</span>
+      <span class:list={['type', { inv: t.type === 'Invited' }]}>{t.type}</span>
+    </li>
+  ))}
+</ol>

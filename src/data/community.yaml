@@ -1,0 +1,28 @@
+abacbs:
+  org: Australian Bioinformatics & Computational Biology Society
+  role: Vice-President of ABACBS
+  url: https://www.abacbs.org
+  paragraphs:
+    - >-
+      ABACBS is Australia's national society and peak body for bioinformatics and computational
+      biology, representing more than 1,000 researchers. As Vice-President, Feargal wrote the
+      society's submissions to the 2025 NHMRC Strategy and the 2024 National Research
+      Infrastructure Roadmap.
+    - >-
+      He also brought the national conference to Adelaide Oval in November 2025. It drew more than
+      500 attendees and $90,000 in sponsorship, with keynotes from Stanford and EMBL-EBI, and was
+      opened by the Governor of South Australia, Her Excellency the Honourable Frances Adamson AC.
+  terms:
+    - { when: 2025–present, what: Vice-President }
+    - { when: 2023–2024, what: Postdoctoral Representative }
+    - { when: "2025", what: Special Recognition Award }
+
+service:
+  - title: Australian Society for Microbiology
+    detail: South Australian Representative, ASM LGBTQ+ Network · Organising committee, 2027 ASM TriState meeting
+  - title: Grant assessment
+    detail: NHMRC Investigator Grants · Medical Research Future Fund · Worldwide Cancer Research · Channel 7 Children's Research Foundation · Flinders Foundation Health Research Grants
+  - title: Peer review
+    detail: "*Nature Microbiology*, *Brain, Behavior, and Immunity*, *BMC Medicine*, *eBioMedicine* and others, reviewing 1–2 manuscripts a month"
+  - title: Teaching
+    detail: BIOL3771 DNA-to-Genome · MDSC1102 Skills for Medical Scientists

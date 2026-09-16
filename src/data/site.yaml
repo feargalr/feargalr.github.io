@@ -1,0 +1,54 @@
+# Core profile. Everything here appears across the site.
+name: Feargal J. Ryan
+postnominals: PhD
+honorific: Dr
+eyebrow: Microbiologist · Bioinformatician · Systems biologist
+lede: I study how we live with the microbes and viruses in our bodies, and how those relationships shape immunity, vaccine responses and disease.
+
+# Short description used by search engines and link previews
+description: Microbiologist, bioinformatician and systems biologist studying how the microbes and viruses in our bodies shape immunity, vaccine responses and disease.
+
+roles:
+  - lead: NHMRC Emerging Leadership Fellow
+    rest: "& Senior Research Fellow, Flinders University"
+  - lead: Group Leader
+    rest: Computational Multi-Omics · Flinders University & SAHMRI
+  - lead: Vice-President
+    rest: Australian Bioinformatics & Computational Biology Society
+
+# Third-person bio, written to be quoted by search engines and LLMs
+bio: >-
+  Dr Feargal J. Ryan is a leading computational biologist, working across microbiology,
+  bioinformatics and systems biology. His discoveries, published in journals including
+  *Nature* and *Science*, have started clinical trials and are cited in health guidance from
+  the UK, US, Germany, the European Union and the World Health Organization. He is on the
+  Stanford/Elsevier list of the world's top 2% of scientists.
+
+photo:
+  src: /feargal-ryan.jpg
+  alt: Dr Feargal J. Ryan, microbiologist and bioinformatician at Flinders University
+
+# Figures that are not pulled automatically
+figures:
+  publications: "50+"
+  funding: "$9M+"
+
+profiles:
+  orcid: 0000-0002-1565-4598
+  scholar: https://scholar.google.com/citations?user=9hGB7goAAAAJ
+  github: https://github.com/feargalr
+  linkedin: https://www.linkedin.com/in/feargal-ryan-978a75135/
+  institution: https://www.flinders.edu.au/people/feargal.ryan
+
+name_variants: [Feargal Ryan, F. J. Ryan, Fergal Ryan]
+knows_about: [Microbiology, Microbiome, Bioinformatics, Systems biology, Systems immunology, Gut virome, Bacteriophages, Vaccine responses, Long COVID, Inflammatory bowel disease, Metagenomics, Multi-omics integration]
+alumni_of: University College Cork
+affiliations:
+  - { name: Flinders University, type: CollegeOrUniversity }
+  - { name: South Australian Health and Medical Research Institute, type: ResearchOrganization }
+
+contact:
+  # Paste your Formspree form URL here, e.g. https://formspree.io/f/abcdwxyz
+  form_endpoint: ""
+  address: Health and Medical Research Building, Flinders University, Bedford Park SA 5042
+  topics: [Research collaboration, PhD or postdoc opportunities, Software help, Talks & media, Something else]

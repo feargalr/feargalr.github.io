@@ -1,9 +1,11 @@
 - slug: vaccines
-  title: Early-life microbes & vaccine responses
+  title: Understanding variability in vaccine antibody and T cell responses
   summary: >-
-    Why do some people respond strongly to vaccines and others don't? Gut Bifidobacteria turn out
-    to be essential for infant responses to the PCV13 pneumococcal vaccine. Antibiotics given in
-    the first days of life deplete them and blunt vaccine responses for up to seven months.
+    Why do some people respond strongly to vaccines and others don't? In infants, gut
+    Bifidobacteria turn out to be essential for optimal responses to the PCV13 pneumococcal
+    vaccine, and antibiotics given in the first days of life blunt those responses for up to seven
+    months. In adults, a multi-omics atlas of the immune system compared innate and adaptive
+    responses to mRNA and adenovirus-vectored COVID-19 vaccines.
   impact: >-
     A world-first probiotic trial now underway in South Australia; Research Highlights in
     *Nature Reviews Microbiology* and *Nature Reviews Immunology*.

@@ -19,7 +19,7 @@
     Some of the earliest molecular evidence for long COVID: immune gene-expression signatures that
     persist months after SARS-CoV-2 infection, and trace-level cytokines that impair heart muscle
     cell function.
-  impact: Cited in UK NICE clinical guidance; Altmetric score of 872, in the top 1% of research outputs.
+  impact: Cited in NICE's COVID-19 guidance documents (UK); Altmetric score of 872, in the top 1% of research outputs.
   papers:
     - { year: 2022, title: Long-term perturbation of the peripheral immune system months after SARS-CoV-2 infection, venue: BMC Medicine, doi: 10.1186/s12916-021-02228-6 }
     - { year: 2024, title: Post-acute sequelae of SARS-CoV-2 cardiovascular symptoms and trace-level cytokines, venue: Nature Microbiology, doi: 10.1038/s41564-024-01838-z }

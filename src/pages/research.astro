@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 import ResearchThemes from '../components/ResearchThemes.astro';
+import Feature from '../components/Feature.astro';
 import research from '../data/research.yaml';
 
 const schema = research.flatMap((r: any) => r.papers.map((p: any) => ({
@@ -13,6 +14,7 @@ const schema = research.flatMap((r: any) => r.papers.map((p: any) => ({
 <Base title="Research" description="Research programs of Dr Feargal J. Ryan: early-life microbes and vaccine responses, molecular mechanisms of long COVID, precision medicine for IBD, and the human gut virome." schema={schema}>
   <PageHead title="Research" intro="Some examples of my research and the impact it has had." />
   <div class="wrap page-body">
+    <Feature />
     <ResearchThemes detailed />
     <p class="source-note">For every paper, see <a href="/publications/">Publications</a>.</p>
   </div>

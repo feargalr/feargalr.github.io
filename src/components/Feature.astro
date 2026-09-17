@@ -1,0 +1,21 @@
+---
+import features from '../data/features.yaml';
+import { inline } from '../lib/format';
+
+const f = features.research;
+const show = Boolean(f?.photo);
+---
+{show && (
+  <section class="feature" aria-labelledby="feature-h">
+    <figure>
+      <img src={f.photo.src} alt={f.photo.alt} width="900" height="1200" loading="lazy">
+      <figcaption>{f.photo.caption}</figcaption>
+    </figure>
+    <div class="feature-text">
+      <span class="label">{f.label}</span>
+      <h2 id="feature-h">{f.title}</h2>
+      {f.paragraphs.map((p: string) => <p set:html={inline(p)} />)}
+      <p class="links">{f.links.map((l: any) => <a href={l.url}>{l.label}</a>)}</p>
+    </div>
+  </section>
+)}

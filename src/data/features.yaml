@@ -1,0 +1,20 @@
+# Feature shown at the top of the Research page. Remove or replace to change it.
+research:
+  label: Research in the community
+  title: Sharing Systems
+  photo:
+    src: /sharing-systems-mural.jpg
+    alt: Feargal Ryan standing beside the Sharing Systems mural at the Women's and Children's Hospital, Adelaide, a painted tree with a trunk made of coloured research-data squares
+    caption: With the mural, August 2026.
+  paragraphs:
+    - >-
+      *Sharing Systems*, a new mural by South Australian artist Laura Wills at the Women's and
+      Children's Hospital in Adelaide, weaves real data from our *Nature* study on Bifidobacteria
+      and infant vaccine responses into its tree trunks, plants, birds and butterfly wings.
+    - >-
+      Created with hospital patients and students from Hospital School SA, it pictures a healthy
+      ecosystem working together, much like the microbiome, and welcomes families at one of the
+      hospital's main entrances.
+  links:
+    - { label: About the mural, url: "https://wchfoundation.org.au/sharing-systems/" }
+    - { label: The Nature paper, url: "https://doi.org/10.1038/s41586-025-08796-4" }

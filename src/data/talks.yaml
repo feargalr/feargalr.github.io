@@ -1,9 +1,9 @@
 # Newest first. type: Invited | Accepted | Recording. Add url: for recordings or slides.
 - { date: Sep 2026, event: ASMR South Australian Annual Scientific Meeting, location: Adelaide, type: Invited }
 - { date: Sep 2026, event: West Coast Microbiome Network, location: Western Australia, type: Invited }
+- { date: Sep 2026, event: Adelaide Cancer Seminar Series, detail: Adelaide University, location: Adelaide, type: Invited }
 - { date: Aug 2026, event: Australian Gastroenterology Week, location: Western Australia, type: Invited }
 - { date: Jun 2026, event: Australian Society for Microbiology National Conference, location: Melbourne, type: Invited }
-- { date: "2026", event: Adelaide Cancer Seminar Series, detail: Adelaide University, location: Adelaide, type: Invited }
 - { date: Oct 2025, event: International Conference on Systems Biology, location: "Dublin, Ireland", type: Invited }
 - { date: Jul 2025, event: ISMB/ECCB, detail: Intelligent Systems for Molecular Biology / European Conference on Computational Biology, location: "Liverpool, UK", type: Accepted }
 - { date: Jun 2025, event: "TaxSEA: rapid interpretation of microbiome alterations", detail: Recorded seminar on Cassyni, location: Online, type: Recording, url: "https://doi.org/10.52843/cassyni.8j9hf1" }

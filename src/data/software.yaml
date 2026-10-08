@@ -87,6 +87,11 @@ spotlight:
 
 # "More tools & best practice": smaller tools, resources and methods papers, in display order
 more:
+  - name: FMTrace
+    note: R · 2026
+    description: Compositional barplots of faecal microbiota transplantation donors and recipients, with each species coloured by where it was detected. A quick species-level screen for possible donor-to-recipient transmission.
+    links:
+      - { label: GitHub, url: https://github.com/feargalr/FMTrace }
   - name: SPINGO
     note: Python · 2015
     description: Rapid species-level classifier for 16S rRNA amplicon sequences, developed with Guy Allard and Marcus Claesson at University College Cork.

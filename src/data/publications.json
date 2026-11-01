@@ -1,5 +1,5 @@
 {
- "retrieved": "2026-10-01",
+ "retrieved": "2026-11-01",
  "items": [
   {
    "title": "A culture worth growing: building Australia’s LGBTQIA+ Microbiology Network",
@@ -129,7 +129,7 @@
     "Ryan FJ",
     "Wardill HR"
    ],
-   "cites": 2
+   "cites": 3
   },
   {
    "title": "The gut–heart axis in cardio-oncology",
@@ -173,7 +173,7 @@
     "Lynn DJ",
     "Smith JR"
    ],
-   "cites": 1
+   "cites": 2
   },
   {
    "title": "A study protocol for a double-blinded, randomised, placebo-controlled trial on the use of encapsulated FMT for reducing the side effects of HSCT: the HSCT-BIOME study",
@@ -251,7 +251,7 @@
     "Marshall HS",
     "Lynn DJ"
    ],
-   "cites": 49
+   "cites": 54
   },
   {
    "title": "DNA hydroxy methylases Tet1 and Tet2 regulate bone aging and bone marrow stromal cell metabolism through the IGF-1/mTOR signaling axis",
@@ -319,7 +319,7 @@
     "Ryan FJ",
     "Lynn DJ"
    ],
-   "cites": 18
+   "cites": 21
   },
   {
    "title": "Peroxisomal β-oxidation enzyme, DECR2, regulates lipid metabolism and promotes treatment resistance in advanced prostate cancer",
@@ -344,7 +344,7 @@
     "Nassar ZD",
     "Butler LM"
    ],
-   "cites": 24
+   "cites": 27
   },
   {
    "title": "Post-acute sequelae of SARS-CoV-2 cardiovascular symptoms are associated with trace-level cytokines that affect cardiomyocyte function",
@@ -384,7 +384,7 @@
     "Trau M",
     "Short KR"
    ],
-   "cites": 21
+   "cites": 20
   },
   {
    "title": "Spatial MS multiomics on clinical prostate cancer tissues",
@@ -438,7 +438,7 @@
     "Barry SE",
     "Lynn DJ"
    ],
-   "cites": 50
+   "cites": 49
   },
   {
    "title": "Autologous Faecal Microbiota Transplantation to Improve Outcomes of Haematopoietic Stem Cell Transplantation: Results of a Single-Centre Feasibility Study",
@@ -459,7 +459,7 @@
     "Ryan FJ",
     "Wardill HR"
    ],
-   "cites": 3
+   "cites": 6
   },
   {
    "title": "Engineered bacteria detect tumor DNA",
@@ -511,7 +511,7 @@
     "Ross RP",
     "Hill C"
    ],
-   "cites": 37
+   "cites": 33
   },
   {
    "title": "No evidence of durable trained immunity after two doses of adenovirus-vectored or mRNA COVID-19 vaccines",
@@ -605,7 +605,7 @@
     "Grubor-Bauk B",
     "Lynn DJ"
    ],
-   "cites": 284
+   "cites": 274
   },
   {
    "title": "Protocol to assess the impact of early-life antibiotic exposure on murine longevity",
@@ -693,7 +693,7 @@
     "Shanahan F",
     "Claesson MJ"
    ],
-   "cites": 254
+   "cites": 246
   },
   {
    "title": "The composition of the gut microbiota following early-life antibiotic exposure affects host health and longevity in later life",
@@ -726,7 +726,7 @@
     "Rogers GB",
     "Lynn DJ"
    ],
-   "cites": 70
+   "cites": 61
   },
   {
    "title": "The immunotoxicity, but not anti-tumor efficacy, of anti-CD40 and anti-CD137 immunotherapies is dependent on the gut microbiota",
@@ -754,7 +754,7 @@
     "Lynn MA",
     "Lynn DJ"
    ],
-   "cites": 40
+   "cites": 39
   },
   {
    "title": "Zika Virus Infection of Human Iris Pigment Epithelial Cells",
@@ -831,7 +831,7 @@
     "Shanahan F",
     "Claesson MJ"
    ],
-   "cites": 291
+   "cites": 288
   },
   {
    "title": "Application of machine learning techniques for creating urban microbial fingerprints",
@@ -842,7 +842,7 @@
    "authors": [
     "Ryan FJ"
    ],
-   "cites": 47
+   "cites": 45
   },
   {
    "title": "Changes in the Composition of the Gut Microbiota and the Blood Transcriptome in Preterm Infants at Less than 29 Weeks Gestation Diagnosed with Bronchopulmonary Dysplasia",
@@ -867,7 +867,7 @@
     "Rogers GB",
     "Lynn DJ"
    ],
-   "cites": 42
+   "cites": 40
   },
   {
    "title": "Choice of assembly software has a critical impact on virome characterisation",
@@ -882,7 +882,7 @@
     "Ross RP",
     "Hill C"
    ],
-   "cites": 173
+   "cites": 156
   },
   {
    "title": "Differential gene expression in the mesocorticolimbic system of innately high- and low-impulsive rats",
@@ -922,7 +922,7 @@
     "Cryan JF",
     "Schellekens H"
    ],
-   "cites": 15
+   "cites": 13
   },
   {
    "title": "Short-term consumption of a high-fat diet increases host susceptibility to Listeria monocytogenes infection",
@@ -944,7 +944,7 @@
     "Hill C",
     "Gahan CGM"
    ],
-   "cites": 90
+   "cites": 86
   },
   {
    "title": "The Human Gut Virome Is Highly Diverse, Stable, and Individual Specific",
@@ -968,7 +968,7 @@
     "Ross RP",
     "Hill C"
    ],
-   "cites": 805
+   "cites": 737
   },
   {
    "title": "Whole-Virome Analysis Sheds Light on Viral Dark Matter in Inflammatory Bowel Disease",
@@ -989,7 +989,7 @@
     "Ross RP",
     "Hill C"
    ],
-   "cites": 503
+   "cites": 454
   },
   {
    "title": "Biology and Taxonomy of crAss-like Bacteriophages, the Most Abundant Virus in the Human Gut",
@@ -1009,7 +1009,7 @@
     "Ross RP",
     "Hill C"
    ],
-   "cites": 347
+   "cites": 315
   },
   {
    "title": "Long-term colonisation with donor bacteriophages following successful faecal microbial transplantation",
@@ -1028,7 +1028,7 @@
     "Satokari R",
     "Hill C"
    ],
-   "cites": 169
+   "cites": 162
   },
   {
    "title": "Reproducible protocols for metagenomic analysis of human faecal phageomes",
@@ -1051,7 +1051,7 @@
     "Ross RP",
     "Hill C"
    ],
-   "cites": 220
+   "cites": 200
   },
   {
    "title": "Social interaction-induced activation of RNA splicing in the amygdala of microbiome-deficient mice",
@@ -1071,7 +1071,7 @@
     "Dinan TG",
     "Cryan JF"
    ],
-   "cites": 107
+   "cites": 106
   },
   {
    "title": "Viral Dark Matter in the Gut Virome of Elderly Humans",
@@ -1107,7 +1107,7 @@
     "Ross PR",
     "Hill C"
    ],
-   "cites": 139
+   "cites": 129
   },
   {
    "title": "Tumour-associated and non-tumour-associated microbiota in colorectal cancer",
@@ -1126,7 +1126,7 @@
     "Shanahan F",
     "O'Toole PW"
    ],
-   "cites": 856
+   "cites": 804
   },
   {
    "title": "Regulation of prefrontal cortex myelination by the microbiota",
@@ -1144,7 +1144,7 @@
     "Clarke G",
     "Cryan JF"
    ],
-   "cites": 662
+   "cites": 635
   },
   {
    "title": "Microbes & neurodevelopment – Absence of microbiota during early life increases activity-related transcriptional pathways in the amygdala",
@@ -1162,7 +1162,7 @@
     "Dinan TG",
     "Cryan JF"
    ],
-   "cites": 236
+   "cites": 233
   },
   {
    "title": "SPINGO: a rapid species-classifier for microbial amplicon sequences",
@@ -1176,7 +1176,7 @@
     "Jeffery IB",
     "Claesson MJ"
    ],
-   "cites": 167
+   "cites": 160
   }
  ]
 }

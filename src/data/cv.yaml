@@ -15,7 +15,7 @@ awards:
   - { when: "2025", title: Special Recognition Award for Outstanding Contributions, where: Australian Bioinformatics & Computational Biology Society }
   - { when: "2025", title: People's Choice Award, where: Microbiome Virtual International Forum }
   - { when: "2025", title: Vice-Chancellor's Award for Mid-Career Researchers, where: Flinders University }
-  - { when: "2022", title: Award for Scientific Excellence, where: APC Microbiome Institute }
+  - { when: "2020", title: Award for Scientific Excellence, where: APC Microbiome Institute }
 
 funding_total: More than $9M in competitive funding as CI or AI.
 funding:
